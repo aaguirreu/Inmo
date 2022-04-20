@@ -6,9 +6,9 @@ module.exports = function (client) {
   return new Manager({
     nodes: [
       {
-        //host: "lavalink-node.herokuapp.com",
+        host: "lavalink-node.herokuapp.com",
         //host: "lavalink-graljadue.herokuapp.com",
-        host: "localhost",
+        //host: "localhost",
         port: 80,
         password: "pichulajadue",
       },
