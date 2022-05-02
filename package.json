@@ -14,6 +14,9 @@
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
     "erela.js": "^2.3.3",
+    "erela.js-vk": "^2.3.3-vk-10",
+    "i": "^0.3.7",
+    "npm": "^8.8.0",
     "youtube-suggest": "^1.1.2"
   }
 }
