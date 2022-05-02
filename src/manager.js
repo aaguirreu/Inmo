@@ -30,7 +30,7 @@ module.exports = function (client) {
     )
 
     .on("nodeDisconnect", ( code, reason ) => {
-      console.log(`Node ${node.options.identifier} disconnected. error: ${code} reason ${reason}`)
+      console.log(`Node disconnected. code ${code} reason ${reason}`)
     })
     
     .on("trackStart", async (player, track)  => {
