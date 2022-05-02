@@ -29,11 +29,10 @@ module.exports = function (client) {
       )
     )
 
-    .on("nodeDisconnect", (node, error) =>
-      console.log(
-        `Node ${node.options.identifier} disconnected. error: ${error.code} reason ${error.reason}`
-      )
-    )
+    .on("nodeDisconnect", (node, error) => {
+      console.log(`Node ${node.options.identifier} disconnected. error: ${error.code} reason`)
+      console.log(error.reason)
+    })
     
     .on("trackStart", async (player, track)  => {
       if (embedAux !== null) embedAux.delete()
