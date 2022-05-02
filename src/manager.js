@@ -1,4 +1,4 @@
-const { Manager } = require("erela.js");
+const { Manager } = require("erela.js-vk");
 const {MessageEmbed} = require("discord.js");
 var embedAux = null
 
