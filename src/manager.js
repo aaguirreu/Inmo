@@ -31,7 +31,7 @@ module.exports = function (client) {
 
     .on("nodeDisconnect", (node, error) =>
       console.log(
-        `Node ${node.options.identifier} disconnected. had an error: ${error.message}`
+        `Node ${node.options.identifier} disconnected. error: ${error.code} reason ${error.reason}`
       )
     )
     
