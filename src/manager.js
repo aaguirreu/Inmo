@@ -19,7 +19,7 @@ module.exports = function (client) {
     },
   })
     .on("nodeConnect", (node) =>{ 
-      console.log(`Node ${node.options.identifier} connected`) 
+      console.log(`Node ${node.options.identifier} connected`)
     }
     )
 

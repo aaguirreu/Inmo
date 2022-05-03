@@ -53,6 +53,14 @@ client.login(token);
 
 client.on("raw", (d) => client.manager.updateVoiceState(d));
 
+client.manager.on("nodeDisconnect", ( code, reason ) => {
+  client.manager.init(client.user.id);
+  /*console.log(`Node disconnected. code:`)
+  console.log(code)
+  console.log(`reason:`)
+  console.log(reason)*/
+})
+
 client.on('interactionCreate', async interaction => {
 
   //Autocomplete suggestions
