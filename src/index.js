@@ -2,7 +2,7 @@ require("dotenv").config();
 const { Client, MessageEmbed, Message, CommandInteractionOptionResolver} = require("discord.js");
 const client = new Client({ intents: ["GUILDS", "GUILD_MEMBERS", "GUILD_BANS","GUILD_EMOJIS_AND_STICKERS", "GUILD_INTEGRATIONS",
 "GUILD_VOICE_STATES", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS", "GUILD_MESSAGE_TYPING"] });
-client.manager = require("../src/manager")(client);
+client.manager = require("./manager")(client);
 const {token, clientId, guildId} = require('../config.json');
 const { setTimeout } = require("timers");
 const { REST } = require('@discordjs/rest');
