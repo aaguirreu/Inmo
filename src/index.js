@@ -7,7 +7,8 @@ const {token, clientId, guildId} = require('../config.json');
 const { setTimeout } = require("timers");
 const { REST } = require('@discordjs/rest');
 const { Routes, ApplicationCommandOptionType } = require('discord-api-types/v9');
-const youtubeSuggest = require('youtube-suggest')
+const youtubeSuggest = require('youtube-suggest');
+const { timeStamp } = require("console");
 
 
 const commands = [{
