@@ -30,7 +30,7 @@ module.exports = function (client) {
     )
 
     .on("nodeDisconnect", ( code, reason ) => {
-      console.log(`Node disconnected. ${reason}`)
+      console.log(`Node disconnected`)
       /*console.log(`Node disconnected. code:`)
       console.log(code)
       console.log(`reason:`)
