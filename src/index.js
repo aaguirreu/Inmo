@@ -34,10 +34,13 @@ const rest = new REST({ version: '9' }).setToken(token);
   try {
     console.log('Started refreshing application (/) commands.');
 
+    // Registra comandos en una guild
     /*await rest.put(
       Routes.applicationGuildCommands(clientId, guildId),
       { body: commands },
     );*/
+
+    //Registra comandos en todas las guilds (global)
     await rest.put(
       Routes.applicationCommands(clientId),
       { body: commands },
