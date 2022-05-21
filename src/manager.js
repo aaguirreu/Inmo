@@ -7,7 +7,8 @@ module.exports = function (client) {
     nodes: [
       {
         //host: "lavalink-node.herokuapp.com",
-        host: "lavalink-graljadue.herokuapp.com",
+        //host: "lavalink-graljadue.herokuapp.com",
+        host: "Lavalink-Nodejs.aaguirreu.repl.co",
         //host: "localhost",
         port: 80,
         password: "pichulajadue",
