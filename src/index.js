@@ -110,7 +110,8 @@ client.on('interactionCreate', async interaction => {
         client.manager.init(client.user.id);
         player.queue.add(res.tracks[0]);
         if (!player.playing && !player.paused /*&& !player.queue.length*/) {player.connect(); player.play() }
-        interaction.reply(`${interaction.guild.members.cache.get(interaction.user.id).displayName} ha ponío [${res.tracks[0].title}](${res.tracks[0].uri})`)
+        await interaction.reply('Working on it')
+        await interaction.editReply(`${interaction.guild.members.cache.get(interaction.user.id).displayName} ha ponío [${res.tracks[0].title}](${res.tracks[0].uri})`)
         console.log(`${interaction.guild.members.cache.get(interaction.user.id).displayName} ha ponío ${res.tracks[0].title}`)
       } catch (error) {
         console.log(error)
