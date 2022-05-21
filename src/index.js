@@ -90,8 +90,10 @@ client.on('interactionCreate', async interaction => {
     interaction.respond(respond)
     })
   }
+
   //return si no es comando
   if (!interaction.isCommand()) return;
+
   ///play canciones.
   if (interaction.commandName === 'play') {
     try {
@@ -114,6 +116,7 @@ client.on('interactionCreate', async interaction => {
         console.log(error)
       }
   }
+  
   // skipea la canción
   if (interaction.commandName === 'skip') {
     const player = client.manager.players.get(interaction.guild.id);

@@ -10,8 +10,10 @@ module.exports = function (client) {
         //host: "lavalink-graljadue.herokuapp.com",
         host: "Lavalink-Nodejs.aaguirreu.repl.co",
         //host: "localhost",
-        port: 80,
-        password: "pichulajadue",
+        port: 443,
+        //password: "youshallnotpass",
+        password: 'inmo98',
+        secure: true,
       },
     ],
     send(id, payload) {
