@@ -49,7 +49,8 @@ module.exports = function (client) {
     .on("queueEnd", (player) => {
       client.channels.cache.get(player.textChannel);//.send("Queue has ended.");
       console.log("Queue has ended.");
-      setTimeout(() => player.destroy(), 30000)
+      
+      setTimeout(() => {if(!player.playing) player.destroy();}, 30000)
     });
 
     function createEmbed(player, track) {

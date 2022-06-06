@@ -108,11 +108,20 @@ client.on('interactionCreate', async interaction => {
           textChannel: interaction.channel.id,
       });
         client.manager.init(client.user.id);
+
+      if(!res.playlist) {
         player.queue.add(res.tracks[0]);
         if (!player.playing && !player.paused /*&& !player.queue.length*/) {player.connect(); player.play() }
         await interaction.reply('Working on it')
         await interaction.editReply(`${interaction.guild.members.cache.get(interaction.user.id).displayName} ha ponío [${res.tracks[0].title}](${res.tracks[0].uri})`)
         console.log(`${interaction.guild.members.cache.get(interaction.user.id).displayName} ha ponío ${res.tracks[0].title}`)
+      } else {
+        player.queue.add(res.tracks[0]);
+        if (!player.playing && !player.paused /*&& !player.queue.length*/) {player.connect(); player.play() }
+        await interaction.reply('Working on it')
+        await interaction.editReply(`e han agregado ${player.queue.size + 1} canciones a la cola.\nPlaylist: [${results.playlist.name}](${args})`)
+        console.log(`e han agregado ${player.queue.size + 1} canciones a la cola.\nPlaylist: [${results.playlist.name}](${args})`)
+      } 
       } catch (error) {
         console.log(error)
       }
