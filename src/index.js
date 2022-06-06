@@ -24,9 +24,13 @@ const commands = [{
 },
   {
     name: 'skip',
-    description: 'Skipear canción',
+    description: 'skipea una canción',
+  },
+  {
+    name: 'clear',
+    description: 'borra la queue',
   }
-]; 
+];
 
 const rest = new REST({ version: '9' }).setToken(token);
 
@@ -101,13 +105,14 @@ client.on('interactionCreate', async interaction => {
         interaction.options.getString('song'),
         interaction.guild.members.cache.get(interaction.user.id).user.username
       )
-      const player = client.manager.create({
-          guild: interaction.guild.id,
-          voiceChannel: interaction.guild.members.cache.get(interaction.user.id).voice.channel.id,
-          //voiceChannel: message.guild.channels.cache.find(r => r.id === "812476431170535424").id,
-          textChannel: interaction.channel.id,
+      player = client.manager.create({
+      guild: interaction.guild.id,
+      voiceChannel: interaction.guild.members.cache.get(interaction.user.id).voice.channel.id,
+      //voiceChannel: message.guild.channels.cache.find(r => r.id === "812476431170535424").id,
+      textChannel: interaction.channel.id,
       });
-        client.manager.init(client.user.id);
+      //ver si esto dejarlo o no
+      client.manager.init(client.user.id);
 
       if(!res.playlist) {
         player.queue.add(res.tracks[0]);
@@ -116,11 +121,11 @@ client.on('interactionCreate', async interaction => {
         await interaction.editReply(`${interaction.guild.members.cache.get(interaction.user.id).displayName} ha ponío [${res.tracks[0].title}](${res.tracks[0].uri})`)
         console.log(`${interaction.guild.members.cache.get(interaction.user.id).displayName} ha ponío ${res.tracks[0].title}`)
       } else {
-        player.queue.add(res.tracks[0]);
+        player.queue.add(res.tracks);
         if (!player.playing && !player.paused /*&& !player.queue.length*/) {player.connect(); player.play() }
         await interaction.reply('Working on it')
-        await interaction.editReply(`e han agregado ${player.queue.size + 1} canciones a la cola.\nPlaylist: [${results.playlist.name}](${args})`)
-        console.log(`e han agregado ${player.queue.size + 1} canciones a la cola.\nPlaylist: [${results.playlist.name}](${args})`)
+        await interaction.editReply(`${interaction.guild.members.cache.get(interaction.user.id).displayName} ha ponío ${res.tracks.length} canciones a la cola.\nPlaylist: [${res.playlist.name}](${interaction.options.getString('song')})`)
+        console.log(`${interaction.guild.members.cache.get(interaction.user.id).displayName} ha ponío ${res.tracks.length} canciones a la cola.\nPlaylist: [${res.playlist.name}](${interaction.options.getString('song')})`)
       } 
       } catch (error) {
         console.log(error)
@@ -132,9 +137,22 @@ client.on('interactionCreate', async interaction => {
     const player = client.manager.players.get(interaction.guild.id);
     if(player) {
       player.stop();
+      await interaction.reply(`${interaction.guild.members.cache.get(interaction.user.id).displayName} skipeó la canción`)
+      console.log(`${interaction.guild.members.cache.get(interaction.user.id).displayName} skipeó la canción`)
+    } else {
+      await interaction.reply(`${interaction.guild.members.cache.get(interaction.user.id).displayName} no hay canciones sonando`)
+      console.log(`${interaction.guild.members.cache.get(interaction.user.id).displayName} no hay canciones sonando`)
     }
-    interaction.reply(`${interaction.guild.members.cache.get(interaction.user.id).displayName} skipeó la canción`)
-    console.log(`${interaction.guild.members.cache.get(interaction.user.id).displayName} skipeó la canción`)
+    
+  }
+
+  if (interaction.commandName === 'clear') {
+    const player = client.manager.players.get(interaction.guild.id);
+    if(player) {
+      player.queue.clear();
+      await interaction.reply(`${interaction.guild.members.cache.get(interaction.user.id).displayName} ha borrado la queue`)
+      console.log(`${interaction.guild.members.cache.get(interaction.user.id).displayName} ha borrado la queue`)
+    }
   }
 
 });

@@ -77,7 +77,7 @@ module.exports = function (client) {
                 var posSec = Math.trunc(player.position/1000%60 - 1);
                 if (posSec < 0) posSec = 0
                 var durMin = Math.trunc(track.duration/1000/60);
-                var durSec = Math.trunc(track.duration/1000%60-1);
+                var durSec = Math.trunc(track.duration/1000%60 - 1);
                 if (durSec < 0) durSec = 0
                 aux = posSec
                 embed.setTitle(':arrow_forward:  Estás escuchando  :musical_note: :sweat_drops:')
