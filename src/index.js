@@ -152,6 +152,9 @@ client.on('interactionCreate', async interaction => {
       player.queue.clear();
       await interaction.reply(`${interaction.guild.members.cache.get(interaction.user.id).displayName} ha borrado la queue`)
       console.log(`${interaction.guild.members.cache.get(interaction.user.id).displayName} ha borrado la queue`)
+    } else {
+      await interaction.reply(`${interaction.guild.members.cache.get(interaction.user.id).displayName} no hay canciones en la queue`)
+      console.log(`${interaction.guild.members.cache.get(interaction.user.id).displayName} no hay canciones en la queue`)
     }
   }
 
